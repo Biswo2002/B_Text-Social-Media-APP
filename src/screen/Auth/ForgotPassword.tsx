@@ -136,7 +136,7 @@ const ForgotPassword = () => {
             </ScrollView>
             <Button
                 isDisabled={!selectState}
-                onPress={() => navigate('ForgotPasswordVerification')}
+                onPress={() => navigate('OTPVerification')}
                 my={4}
                 mx={4}
                 colorScheme={'rose'}

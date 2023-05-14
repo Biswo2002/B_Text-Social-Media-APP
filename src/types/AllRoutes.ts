@@ -3,9 +3,10 @@ import {CompositeNavigationProp, RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 export type PublicRoutesType = {
-  ForgotPasswordVerification: undefined;
+  OTPVerification: undefined;
   ForgotPassword: undefined;
   LoginAccount: undefined;
+  NewPassword: undefined;
   OnBoarding: undefined;
   Register: undefined;
   Login: undefined;
