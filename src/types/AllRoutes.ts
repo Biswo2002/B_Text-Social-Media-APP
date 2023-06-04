@@ -1,11 +1,12 @@
-import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import {CompositeNavigationProp, RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 
 export type PublicRoutesType = {
   OTPVerification: undefined;
   ForgotPassword: undefined;
   LoginAccount: undefined;
+  SetProfile: undefined;
   NewPassword: undefined;
   OnBoarding: undefined;
   Register: undefined;
