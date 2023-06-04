@@ -5,12 +5,12 @@ import OTPVerification from '../../screen/Auth/OTPVerification';
 import ForgotPassword from '../../screen/Auth/ForgotPassword';
 import LoginAccount from '../../screen/Auth/LoginAccount';
 import OnBoarding from '../../screen/public/onBoarding';
+import SetProfile from '../../screen/public/SetProfile';
 import NewPassword from '../../screen/Auth/NewPassword';
 import Welcome from '../../screen/public/Welcome';
 import Register from '../../screen/Auth/Register';
 import Login from '../../screen/Auth/Login';
 
-// import { Login } from 's';
 
 const PublicRoutes = () => {
   const Stack = createNativeStackNavigator();
@@ -24,6 +24,7 @@ const PublicRoutes = () => {
       <Stack.Screen name='LoginAccount' component={LoginAccount} />
       <Stack.Screen name='NewPassword' component={NewPassword} />
       <Stack.Screen name='OnBoarding' component={OnBoarding} />
+      <Stack.Screen name='SetProfile' component={SetProfile} />
       <Stack.Screen name='Register' component={Register} />
       <Stack.Screen name='Welcome' component={Welcome} />
       <Stack.Screen name='Login' component={Login} />
