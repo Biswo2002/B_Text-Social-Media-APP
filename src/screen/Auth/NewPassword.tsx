@@ -8,6 +8,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import LottieView from 'lottie-react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
+import { ANIMATION } from '../../assets'
 
 
 const NewPassword = () => {
@@ -166,9 +167,9 @@ const NewPassword = () => {
                             justifyContent={'center'}
                         >
                             <LottieView
-                                source={{ uri: 'https://lottie.host/43fc6569-896b-4034-9c2b-41b3bfb74715/lyKl5eq6bm.json' }}
+                                source={ANIMATION.SUCCESS}
                                 autoPlay
-                                loop={false}
+                                loop={true}
                             />
                         </Center>
                         <Center>
