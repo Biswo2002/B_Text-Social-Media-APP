@@ -5,6 +5,7 @@ import LottieView from 'lottie-react-native';
 import React from 'react'
 import { PublicNavigationProps } from '../../types/AllRoutes';
 import { COLORS, FONTS } from '../../styles'
+
 const Login = () => {
     const { navigate } = useNavigation<PublicNavigationProps>();
     const LoginType = [
@@ -130,9 +131,8 @@ const Login = () => {
                     <Text
                         mx={2}
                         color={'rose.600'}
-                        fontSize={'md'}
-                        bold
-                        fontFamily={FONTS[600].normal}
+                        // fontSize={'md'}
+                        fontFamily={'Montserrat-Bold'}
                     >
                         Sign up
                     </Text>
