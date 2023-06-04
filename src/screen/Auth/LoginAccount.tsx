@@ -1,10 +1,11 @@
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import { useNavigation } from '@react-navigation/native';
-import React from 'react'
+import LottieView from 'lottie-react-native';
+import React, { useState } from 'react'
 import {
     ScrollView,
     Pressable,
@@ -16,15 +17,27 @@ import {
     Text,
     Box,
     Row,
+    Modal,
+    Center,
 } from 'native-base';
 import { PublicNavigationProps } from '../../types/AllRoutes';
 import { COLORS, FONTS } from '../../styles'
+import CountryPicker from '../../components/CountryPicker';
+import { ANIMATION } from '../../assets';
 
 const LoginAccount = () => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [IsSecureEntry, setIsSecureEntry] = React.useState(false);
     const { navigate, goBack } = useNavigation<PublicNavigationProps>();
+    const [selectedCountry, setSelectedCountry] = useState<any>({
+        code: 'IN',
+        name: 'India',
+        phone: '91',
+    });
+    const [visible, setVisible] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+
     return (
         <Box bgColor={COLORS.SECONDARY} flex={1} >
             <ScrollView showsVerticalScrollIndicator={false} >
@@ -112,13 +125,17 @@ const LoginAccount = () => {
 
                     <Button
                         // isDisabled={!email || !password}
+                        onPress={() => setShowModal(true)}
+                        // onPress={() => navigate('CountryName')}
                         mt={16}
                         p={3}
                         colorScheme={'rose'}
                         borderRadius={'20'}
                     >
-                        <Text color={'#fff'} bold>
-                            Sign in
+                        <Text color={'#fff'}
+                            fontFamily={FONTS[700].normal}
+                        >
+                            Next
                         </Text>
                     </Button>
                     <TouchableOpacity onPress={() => navigate('ForgotPassword')}>
@@ -212,13 +229,71 @@ const LoginAccount = () => {
                                 Already have an account?
                             </Text>
                             <Text
-                                bold alignSelf={'flex-end'} color={COLORS.PRIMARY} mt={4}>
+                                alignSelf={'flex-end'} color={COLORS.PRIMARY} mt={4}>
                                 Sign up
                             </Text>
                         </Row>
                     </TouchableOpacity>
                 </Box>
             </ScrollView>
+            <CountryPicker
+                visible={visible}
+                onClose={() => {
+                    setVisible(false);
+                }}
+                onSelect={(country: any) => {
+                    setSelectedCountry(country);
+                    setVisible(false);
+                }}
+            />
+            <Modal isOpen={showModal} onClose={() => setShowModal(false)} >
+                <Modal.Content maxWidth="600px">
+                    <Modal.Body
+                        bgColor={COLORS.SECONDARY}
+                    >
+                        <Center
+                            height={Dimensions.get('window').height / 6}
+                            width={Dimensions.get('window').width / 1.5}
+                            bgColor={COLORS.SECONDARY}
+                            justifyContent={'center'}
+                        >
+                            <LottieView
+                                source={ANIMATION.SUCCESS}
+                                autoPlay
+                                loop={true}
+                            />
+                        </Center>
+                        <Center>
+                            <Text
+                                fontSize={'lg'}
+                                color={'pink.700'}
+                                fontFamily={FONTS[700].normal}
+                                bold
+                                py={4}
+                            >
+                                Congratulations!
+                            </Text>
+                            <Text
+                                fontSize={'sm'}
+                                color={'gray.700'}
+                                fontFamily={FONTS[700].normal}
+                                bold
+                                py={4}
+                            >
+                                Your account is ready to use
+                            </Text>
+                        </Center>
+                        <Button
+                            colorScheme={'rose'}
+                            borderRadius={'full'}
+                            // onPress={() => navigate('LoginAccount')}
+                            onPress={() => setVisible(true)}
+                        >
+                            Continue
+                        </Button>
+                    </Modal.Body>
+                </Modal.Content>
+            </Modal>
         </Box >
     )
 }
