@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
-import { PrivateRoutes } from './routes/private'
 import PublicRoutes from './routes/public/PublicRoutes'
+import { PrivateRoutes } from './routes/private'
+import { useAppContext } from './contexts'
 
 const Routes = () => {
+
+    const { isLoggedIn } = useAppContext();
+
     return (
-        // <PrivateRoutes />
-        <PublicRoutes />
+        isLoggedIn ? <PrivateRoutes /> : <PublicRoutes />
     )
 }
 
