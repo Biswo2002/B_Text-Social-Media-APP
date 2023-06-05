@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native'
 import React from 'react'
 import OTPVerification from '../../screen/Auth/OTPVerification';
 import ForgotPassword from '../../screen/Auth/ForgotPassword';
+import FollowScreen from '../../screen/public/FollowScreen';
 import LoginAccount from '../../screen/Auth/LoginAccount';
 import OnBoarding from '../../screen/public/onBoarding';
 import SetProfile from '../../screen/public/SetProfile';
@@ -21,6 +22,7 @@ const PublicRoutes = () => {
     >
       <Stack.Screen name='OTPVerification' component={OTPVerification} />
       <Stack.Screen name='ForgotPassword' component={ForgotPassword} />
+      <Stack.Screen name='FollowScreen' component={FollowScreen} />
       <Stack.Screen name='LoginAccount' component={LoginAccount} />
       <Stack.Screen name='NewPassword' component={NewPassword} />
       <Stack.Screen name='OnBoarding' component={OnBoarding} />

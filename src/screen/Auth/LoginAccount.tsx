@@ -286,8 +286,7 @@ const LoginAccount = () => {
                         <Button
                             colorScheme={'rose'}
                             borderRadius={'full'}
-                            // onPress={() => navigate('LoginAccount')}
-                            onPress={() => setVisible(true)}
+                            onPress={() => { setVisible(true), setShowModal(false) }}
                         >
                             Continue
                         </Button>

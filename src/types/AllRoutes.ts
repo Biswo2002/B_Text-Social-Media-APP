@@ -6,14 +6,17 @@ export type PublicRoutesType = {
   OTPVerification: undefined;
   ForgotPassword: undefined;
   LoginAccount: undefined;
-  SetProfile: undefined;
+  FollowScreen: undefined;
   NewPassword: undefined;
+  SetProfile: undefined;
   OnBoarding: undefined;
   Register: undefined;
   Login: undefined;
 };
 
-export type PrivateRoutesType = {};
+export type PrivateRoutesType = {
+  Home: undefined;
+};
 
 export type BottomTabTypes = {};
 
