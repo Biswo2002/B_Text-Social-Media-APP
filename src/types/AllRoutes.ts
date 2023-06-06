@@ -15,10 +15,17 @@ export type PublicRoutesType = {
 };
 
 export type PrivateRoutesType = {
+  Comments: undefined;
   Home: undefined;
+  Story: undefined;
 };
 
-export type BottomTabTypes = {};
+export type BottomTabTypes = {
+  Profile: undefined;
+  Shorts: undefined;
+  Search: undefined;
+  Add: undefined;
+};
 
 export type PublicNavigationProps = NativeStackNavigationProp<PublicRoutesType>;
 
