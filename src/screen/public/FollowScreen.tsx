@@ -105,6 +105,7 @@ const data = [
 
 ]
 
+
 const FollowScreen = () => {
 
     const { setIsLoggedIn, } = useAppContext()
