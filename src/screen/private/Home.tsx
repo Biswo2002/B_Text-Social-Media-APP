@@ -4,90 +4,30 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
 import Feather from 'react-native-vector-icons/Feather'
 import { Dimensions, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import {
     StatusBar,
+    useDisclose,
+    ScrollView,
     Pressable,
     FlatList,
+    Divider,
     Avatar,
     HStack,
     Image,
-    Box,
+    Input,
+    Text,
+    Icon,
     Row,
-    Text
+    Box,
 } from 'native-base'
 import { PrivateNavigationProps } from '../../types/AllRoutes'
 import { COLORS, FONTS } from '../../styles'
 import Header from '../../components/Header'
+import ActionSheet from '../../components/Actionsheet'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
-const data = [
-    {
-        id: '1.0',
-        name: 'You',
-        img: 'https://img.freepik.com/premium-photo/cute-pretty-baby-boy-hair-costume-lies-tummy_88135-7054.jpg?w=996',
-    },
-    {
-        id: '1',
-        name: 'Ashis',
-        img: 'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?w=826&t=st=1685899203~exp=1685899803~hmac=500c1778b3615b8af19a33fc9152e9b17f33796969b788baa68db7c1056f0388',
-    },
-    {
-        id: '2',
-        name: 'Biswo',
-        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
-    },
-    {
-        id: '3',
-        name: 'Lipsa ',
-        img: 'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?w=826&t=st=1685899203~exp=1685899803~hmac=500c1778b3615b8af19a33fc9152e9b17f33796969b788baa68db7c1056f0388',
-    },
-    {
-        id: '4',
-        name: 'Ritesh',
-        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
-    },
-    {
-        id: '5',
-        name: 'Rajesh',
-        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
-    },
-    {
-        id: '6',
-        name: 'Dinesh',
-        img: 'https://img.freepik.com/free-photo/young-adult-woman-with-beautiful-face-isolated-white-skin-care-concept_186202-8664.jpg?w=740&t=st=1685898670~exp=1685899270~hmac=d9f2f2361fb0788907793dbbf538d6db40cea7ec736aa04cb81bbd1b8c9ab0c1',
-    },
-    {
-        id: '7',
-        name: 'Mahesh',
-        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
-    },
-    {
-        id: '8',
-        name: 'Munesh',
-        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
-    },
-    {
-        id: '9',
-        name: 'Sukesh',
-        img: 'https://img.freepik.com/free-photo/young-adult-woman-with-beautiful-face-isolated-white-skin-care-concept_186202-8664.jpg?w=740&t=st=1685898670~exp=1685899270~hmac=d9f2f2361fb0788907793dbbf538d6db40cea7ec736aa04cb81bbd1b8c9ab0c1',
-    },
-    {
-        id: '10',
-        name: 'Biswajit',
-        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
-    },
-    {
-        id: '11',
-        name: 'Biswo',
-        img: 'https://img.freepik.com/free-photo/young-adult-woman-with-beautiful-face-isolated-white-skin-care-concept_186202-8664.jpg?w=740&t=st=1685898670~exp=1685899270~hmac=d9f2f2361fb0788907793dbbf538d6db40cea7ec736aa04cb81bbd1b8c9ab0c1',
-    },
-    {
-        id: '12',
-        name: 'Manas',
-        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
-    },
 
-]
 
 const Home_Data = [
     {
@@ -250,8 +190,178 @@ const Home_Data = [
     }
 ]
 
+const data1 = [
+    {
+        id: '1',
+        name: 'Ashis ku. Nayak',
+        deg: 'Pricnipal',
+        img: 'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?w=826&t=st=1685899203~exp=1685899803~hmac=500c1778b3615b8af19a33fc9152e9b17f33796969b788baa68db7c1056f0388',
+        status: 'Sent',
+    },
+    {
+        id: '2',
+        name: 'Biswopaban Nayak',
+        deg: 'Software Engineer',
+        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+        status: 'Sent',
+    },
+    {
+        id: '3',
+        name: 'K P Lipsa ',
+        deg: 'Lab Technician',
+        img: 'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?w=826&t=st=1685899203~exp=1685899803~hmac=500c1778b3615b8af19a33fc9152e9b17f33796969b788baa68db7c1056f0388',
+        status: 'Sent',
+    },
+    {
+        id: '4',
+        name: 'Ritesh Ku Sahoo',
+        deg: 'Pricnipal',
+        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+        status: 'Send',
+    },
+    {
+        id: '5',
+        name: 'Rajesh ku. Nayak',
+        deg: 'Pricnipal',
+        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+        status: 'Sent',
+    },
+    {
+        id: '6',
+        name: 'Dinesh ku. Nayak',
+        deg: 'Pricnipal',
+        img: 'https://img.freepik.com/free-photo/young-adult-woman-with-beautiful-face-isolated-white-skin-care-concept_186202-8664.jpg?w=740&t=st=1685898670~exp=1685899270~hmac=d9f2f2361fb0788907793dbbf538d6db40cea7ec736aa04cb81bbd1b8c9ab0c1',
+        status: 'Sent',
+    },
+    {
+        id: '7',
+        name: 'Mahesh ku. Nayak',
+        deg: 'Pricnipal',
+        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+        status: 'Send',
+    },
+    {
+        id: '8',
+        name: 'Munesh ku. Nayak',
+        deg: 'Pricnipal',
+        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+        status: 'Send',
+    },
+    {
+        id: '9',
+        name: 'Sukesh ku. Nayak',
+        deg: 'Pricnipal',
+        img: 'https://img.freepik.com/free-photo/young-adult-woman-with-beautiful-face-isolated-white-skin-care-concept_186202-8664.jpg?w=740&t=st=1685898670~exp=1685899270~hmac=d9f2f2361fb0788907793dbbf538d6db40cea7ec736aa04cb81bbd1b8c9ab0c1',
+        status: 'Sent',
+    },
+    {
+        id: '10',
+        name: 'Biswajit ku. Nayak',
+        deg: 'Pricnipal',
+        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+        status: 'Send',
+    },
+    {
+        id: '11',
+        name: 'Biswopaban Nayak',
+        deg: 'Pricnipal',
+        img: 'https://img.freepik.com/free-photo/young-adult-woman-with-beautiful-face-isolated-white-skin-care-concept_186202-8664.jpg?w=740&t=st=1685898670~exp=1685899270~hmac=d9f2f2361fb0788907793dbbf538d6db40cea7ec736aa04cb81bbd1b8c9ab0c1',
+        status: 'Sent',
+    },
+    {
+        id: '12',
+        name: 'Manas ku. Nayak',
+        deg: 'Pricnipal',
+        img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+        status: 'Send',
+    },
+
+]
+
 const Home = () => {
     const { navigate } = useNavigation<PrivateNavigationProps>();
+    const [isShare, setIsShare] = useState(false)
+    const data = [
+        {
+            id: '1.0',
+            name: 'You',
+            img: 'https://img.freepik.com/premium-photo/cute-pretty-baby-boy-hair-costume-lies-tummy_88135-7054.jpg?w=996',
+            onPress: () => setIsShare(true),
+        },
+        {
+            id: '1',
+            name: 'Ashis',
+            img: 'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?w=826&t=st=1685899203~exp=1685899803~hmac=500c1778b3615b8af19a33fc9152e9b17f33796969b788baa68db7c1056f0388',
+            onPress: () => navigate('Story'),
+        },
+        {
+            id: '2',
+            name: 'Biswo',
+            img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+            onPress: () => navigate('Story'),
+        },
+        {
+            id: '3',
+            name: 'Lipsa ',
+            img: 'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?w=826&t=st=1685899203~exp=1685899803~hmac=500c1778b3615b8af19a33fc9152e9b17f33796969b788baa68db7c1056f0388',
+            onPress: () => navigate('Story'),
+        },
+        {
+            id: '4',
+            name: 'Ritesh',
+            img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+            onPress: () => navigate('Story'),
+        },
+        {
+            id: '5',
+            name: 'Rajesh',
+            img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+            onPress: () => navigate('Story'),
+        },
+        {
+            id: '6',
+            name: 'Dinesh',
+            img: 'https://img.freepik.com/free-photo/young-adult-woman-with-beautiful-face-isolated-white-skin-care-concept_186202-8664.jpg?w=740&t=st=1685898670~exp=1685899270~hmac=d9f2f2361fb0788907793dbbf538d6db40cea7ec736aa04cb81bbd1b8c9ab0c1',
+            onPress: () => navigate('Story'),
+        },
+        {
+            id: '7',
+            name: 'Mahesh',
+            img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+            onPress: () => navigate('Story'),
+        },
+        {
+            id: '8',
+            name: 'Munesh',
+            img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+            onPress: () => navigate('Story')
+        },
+        {
+            id: '9',
+            name: 'Sukesh',
+            img: 'https://img.freepik.com/free-photo/young-adult-woman-with-beautiful-face-isolated-white-skin-care-concept_186202-8664.jpg?w=740&t=st=1685898670~exp=1685899270~hmac=d9f2f2361fb0788907793dbbf538d6db40cea7ec736aa04cb81bbd1b8c9ab0c1',
+            onPress: () => navigate('Story'),
+        },
+        {
+            id: '10',
+            name: 'Biswajit',
+            img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+            onPress: () => navigate('Story'),
+        },
+        {
+            id: '11',
+            name: 'Biswo',
+            img: 'https://img.freepik.com/free-photo/young-adult-woman-with-beautiful-face-isolated-white-skin-care-concept_186202-8664.jpg?w=740&t=st=1685898670~exp=1685899270~hmac=d9f2f2361fb0788907793dbbf538d6db40cea7ec736aa04cb81bbd1b8c9ab0c1',
+            onPress: () => navigate('Story'),
+        },
+        {
+            id: '12',
+            name: 'Manas',
+            img: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3',
+            onPress: () => navigate('Story'),
+        },
+
+    ]
     return (
         <Box bgColor={'#ffff'} flex={'1'} >
             <StatusBar backgroundColor={COLORS.PRIMARY} />
@@ -267,7 +377,7 @@ const Home = () => {
                             justifyContent={'center'}
                             alignItems={'center'}
                             mt={'2'}
-                            onPress={() => navigate('Story')}
+                            onPress={item?.onPress}
                         >
                             <Box
                                 bgColor={COLORS.SECONDARY}
@@ -288,7 +398,9 @@ const Home = () => {
                                 />
                                 {
                                     item?.name === 'You' &&
-                                    <Box position={'absolute'} bottom={0} right={'2%'}>
+                                    <Pressable
+                                        // onPress={() => setIsShare(true)}
+                                        position={'absolute'} bottom={0} right={'2%'}>
                                         <Box
                                             bgColor={COLORS.PRIMARY}
                                             borderRadius={'4'}
@@ -298,7 +410,7 @@ const Home = () => {
                                             justifyContent={'center'}>
                                             <Ionicons name="add" size={18} color={'#ffff'} />
                                         </Box>
-                                    </Box>
+                                    </Pressable>
                                 }
                             </Box>
                             <Text
@@ -445,6 +557,214 @@ const Home = () => {
                     </Box>
                 )}
             />
+
+            <ActionSheet isOpen={isShare} onClose={() => {
+                setIsShare(false)
+            }} >
+                <Row
+                    alignItems={'center'}
+                >
+                    <Avatar
+                        source={{
+                            uri: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3'
+                        }}
+                        size="16"
+                        shadow={2}
+                    />
+                    <Input
+                        placeholder="Write a message"
+                        width="70%"
+                        shadow={1}
+                        focusOutlineColor={COLORS.PRIMARY}
+                        borderRadius="12"
+                        borderColor={'transparent'}
+                        backgroundColor={'#fafafa'}
+                        py="2"
+                        px="1"
+                        fontSize="14"
+                        mx={4}
+                    />
+                </Row>
+                <Divider my="2" _light={{
+                    bg: "muted.800"
+                }} _dark={{
+                    bg: "muted.50"
+                }}
+                    bgColor={'gray.300'}
+                />
+                <Box
+                    mx={'4'}
+                    mr={'8'}
+                    my={2}
+                    p={2}
+                >
+                    <Input
+                        placeholder="Search"
+                        width="100%"
+                        focusOutlineColor={COLORS.PRIMARY}
+                        borderRadius="12"
+                        backgroundColor={'#fafafa'}
+                        py="2"
+                        px="1"
+                        mb={'5'}
+                        fontSize="14"
+                        InputLeftElement={
+                            <Icon
+                                m="2"
+                                ml="3"
+                                size="6"
+                                color="gray.400"
+                                as={<MaterialIcons name="search" />}
+                            />
+                        }
+                    />
+                </Box>
+                <ScrollView
+                    showsVerticalScrollIndicator={false}
+                >
+                    <Row
+                        justifyContent={'space-between'}
+                        alignItems={'center'}
+                        m={3}
+                    >
+                        <HStack
+                            width={'80%'}
+                        >
+                            <Avatar
+                                source={{
+                                    uri: 'https://img.freepik.com/free-photo/portrait-young-thinking-woman-with-some-problem-isolated_186202-7004.jpg?w=740&t=st=1685899523~exp=1685900123~hmac=6142d5bf8ef9ed5b8cd8891167122e508eb61c61a6e8c93be9ee51027d04e4c3'
+                                }}
+                                size="12"
+                            />
+                            <Box
+                                mx={5}
+                                mt={1}
+                            >
+                                <Text
+                                    fontSize={'sm'}
+                                    mt={2}
+                                    color={'#000'}
+                                    fontFamily={FONTS[600].normal}
+                                >
+                                    Add post to your story
+                                </Text>
+
+                            </Box>
+                        </HStack>
+                        <AntDesign name='right' size={20} color={COLORS.PRIMARY} />
+                    </Row>
+                    <Row
+                        justifyContent={'space-between'}
+                        alignItems={'center'}
+                        m={3}
+                    >
+                        <HStack
+                            width={'80%'}
+                        >
+                            <Box
+                                bgColor={COLORS.PRIMARY}
+                                borderRadius={'full'}
+                                p={4}
+                                alignItems={'center'}
+                            >
+                                <MaterialIcons name='groups' size={22} color={'#fff'} />
+                            </Box>
+                            <Box
+                                mx={5}
+                                mt={1}
+                            >
+                                <Text
+                                    fontSize={'sm'}
+                                    mt={2}
+                                    color={'#000'}
+                                    fontFamily={FONTS[600].normal}
+                                >
+                                    Create group
+                                </Text>
+
+                            </Box>
+                        </HStack>
+                        <AntDesign name='right' size={20} color={COLORS.PRIMARY} />
+                    </Row>
+
+                    {
+                        data1?.map(item => (
+                            <Row
+                                justifyContent={'space-between'}
+                                alignItems={'center'}
+                                m={3}
+                                key={item?.id}
+                            >
+                                <HStack
+                                    width={'80%'}
+                                >
+                                    <Avatar
+                                        source={{
+                                            uri: item?.img
+                                        }}
+                                        size="12"
+                                    />
+                                    <Box
+                                        mx={5}
+                                        mt={1}
+                                    >
+                                        <Text
+                                            fontSize={'sm'}
+                                            // mt={4}
+                                            color={'#000'}
+                                            fontFamily={FONTS[600].normal}
+                                        >
+                                            {item?.name}
+                                        </Text>
+                                        <Text
+                                            fontSize={'xs'}
+                                            color={'gray.600'}
+                                            fontFamily={FONTS[500].normal}
+                                        >
+                                            {item?.deg}
+                                        </Text>
+                                    </Box>
+                                </HStack>
+                                {
+                                    item?.status === 'Send' ?
+                                        <Pressable
+                                            mr={1}
+                                            borderWidth={1.5}
+                                            borderColor={COLORS.PRIMARY}
+                                            px={4}
+                                            bgColor={COLORS.PRIMARY}
+                                            py={1}
+                                            borderRadius={'full'}
+                                        >
+                                            <Text
+                                                color={'#fff'}
+                                                fontFamily={FONTS[600].normal}
+                                                fontSize={'xs'}
+                                            >
+                                                {item?.status}
+                                            </Text>
+                                        </Pressable> : <Pressable
+                                            mr={1}
+                                            borderWidth={1.5}
+                                            borderColor={COLORS.PRIMARY}
+                                            px={4}
+                                            py={1}
+                                            borderRadius={'full'}
+                                        >
+                                            <Text
+                                                color={COLORS.PRIMARY}
+                                                fontFamily={FONTS[600].normal}
+                                                fontSize={'xs'}
+                                            >
+                                                {item?.status}
+                                            </Text>
+                                        </Pressable>
+                                }
+                            </Row>
+                        ))
+                    }
+                </ScrollView>
+            </ActionSheet>
         </Box>
     )
 }
