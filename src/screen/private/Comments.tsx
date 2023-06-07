@@ -1,11 +1,22 @@
-import { StyleSheet, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { Avatar, Box, Divider, HStack, Input, Pressable, Row, ScrollView, StatusBar, Text } from 'native-base'
-import ScreenHeader from '../../components/ScreenHeader'
-import { COLORS, FONTS } from '../../styles'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Feather from 'react-native-vector-icons/Feather'
+import React, { useState } from 'react'
+import {
+    ScrollView,
+    Pressable,
+    StatusBar,
+    Divider,
+    Avatar,
+    HStack,
+    Input,
+    Text,
+    Box,
+    Row,
+} from 'native-base'
+import ScreenHeader from '../../components/ScreenHeader'
+import { COLORS, FONTS } from '../../styles'
 
 
 const data = [
@@ -56,6 +67,7 @@ const data = [
     },
 ]
 const Comments = () => {
+    const [show, setShow] = useState(false);
     return (
         <Box
             bgColor={'#fff'}
@@ -282,6 +294,18 @@ const Comments = () => {
                                     alignItems={'center'}
                                     mr={3}
                                 >
+
+                                    {/* <TouchableOpacity
+                                        onPress={() => {
+                                            setShow(!show);
+                                        }}>
+                                        <Ionicons
+                                            name={show ? 'heart' : 'heart-outline'}
+                                            size={30}
+                                            color={'red'}
+                                        />
+                                    </TouchableOpacity> */}
+
                                     <Ionicons name='md-heart-outline' size={25} color={'gray'} />
                                     <Text
                                         fontSize={'sm'}
