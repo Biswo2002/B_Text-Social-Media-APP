@@ -21,8 +21,8 @@ import {
     Center,
 } from 'native-base';
 import { PublicNavigationProps } from '../../types/AllRoutes';
-import { COLORS, FONTS } from '../../styles'
 import CountryPicker from '../../components/CountryPicker';
+import { COLORS, FONTS } from '../../styles'
 import { ANIMATION } from '../../assets';
 
 const LoginAccount = () => {
