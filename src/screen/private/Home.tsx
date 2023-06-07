@@ -1,9 +1,10 @@
+import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Octicons from 'react-native-vector-icons/Octicons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
 import Feather from 'react-native-vector-icons/Feather'
-import { Dimensions, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import {
     StatusBar,
@@ -22,10 +23,9 @@ import {
     Box,
 } from 'native-base'
 import { PrivateNavigationProps } from '../../types/AllRoutes'
+import ActionSheet from '../../components/Actionsheet'
 import { COLORS, FONTS } from '../../styles'
 import Header from '../../components/Header'
-import ActionSheet from '../../components/Actionsheet'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 
 
@@ -277,10 +277,73 @@ const data1 = [
     },
 
 ]
+const Sheet = [
+    {
+        id: '1',
+        title: 'Add to Favorites',
+        icon: <Ionicons name='md-heart-outline' size={23} color={'gray'} />,
+    },
+    {
+        id: '2',
+        title: 'Hide',
+        icon: <Feather name='eye-off' size={23} color={'gray'} />,
+    },
+    {
+        id: '3',
+        title: 'UnFollow',
+        icon: <AntDesign name='user' size={23} color={'gray'} />,
+        // onPress: () => setIsShare(true)
+    },
+
+]
+const ShareSheet = [
+    {
+        id: '1',
+        img: 'https://img.freepik.com/free-psd/glowing-whatsapp-logo-realistic-3d-circle_125540-2095.jpg?w=900&t=st=1686141667~exp=1686142267~hmac=02d4a1c9205ec3bf060b036b1e570d4776dbb5f23e68c4f83416fd55679ad633',
+        title: 'WhatsApp',
+    },
+    {
+        id: '2',
+        img: 'https://img.freepik.com/free-psd/3d-square-with-facebook-logo_125540-1565.jpg?w=900&t=st=1686141536~exp=1686142136~hmac=af6651eb38e2fc5af3384715017a2f1cbf60feaa0a5adfd504852f626238838c',
+        title: 'FaceBook',
+    },
+    {
+        id: '3',
+        img: 'https://img.freepik.com/free-vector/instagram-vector-social-media-icon-7-june-2021-bangkok-thailand_53876-136728.jpg?w=740&t=st=1686138158~exp=1686138758~hmac=5224fc467d9709f241b481a6ca866296ec6b01d77602a0f691ee8e5f711771fd',
+        title: 'Instagram',
+    },
+    {
+        id: '4',
+        img: 'https://img.freepik.com/free-psd/glowing-twitter-logo-realistic-3d-circle_125540-2093.jpg?w=900&t=st=1686141428~exp=1686142028~hmac=415f9d083bedf7594fe1f1818a87620669dccb944374315c0f255fe4f4d6badf',
+        title: 'Twitter',
+    },
+    {
+        id: '5',
+        img: 'https://img.freepik.com/premium-vector/linkedin-icon_488108-5.jpg?w=740',
+        title: 'Linkedin',
+    },
+    {
+        id: '6',
+        img: 'https://img.freepik.com/free-psd/realistic-shiny-3d-round-button-with-telegram-icon_125540-2951.jpg?w=900&t=st=1686141566~exp=1686142166~hmac=2d17cb6613697748313176bcdbf2a024e32e2db1dd7f4c32d1c9e36d373d44e2',
+        title: 'Telegram',
+    },
+]
+
+
+
 
 const Home = () => {
     const { navigate } = useNavigation<PrivateNavigationProps>();
-    const [isShare, setIsShare] = useState(false)
+    const [isShare, setIsShare] = useState(false);
+    const [isSharing, setIsSharing] = useState(false);
+    const [show, setShow] = useState(false);
+    const {
+        isOpen,
+        onOpen,
+        onClose
+    } = useDisclose();
+
+
     const data = [
         {
             id: '1.0',
@@ -362,6 +425,10 @@ const Home = () => {
         },
 
     ]
+
+
+
+
     return (
         <Box bgColor={'#ffff'} flex={'1'} >
             <StatusBar backgroundColor={COLORS.PRIMARY} />
@@ -473,6 +540,7 @@ const Home = () => {
                             </HStack>
                             <Pressable
                                 mr={1}
+                                onPress={onOpen}
                                 borderWidth={1.5}
                                 borderColor={'gray.500'}
                                 px={1}
@@ -517,7 +585,17 @@ const Home = () => {
                                     alignItems={'center'}
                                     mr={3}
                                 >
-                                    <Ionicons name='heart' size={30} color={'red'} />
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            setShow(!show);
+                                        }}>
+                                        <Ionicons
+                                            name={show ? 'heart' : 'heart-outline'}
+                                            size={30}
+                                            color={'red'}
+                                        />
+                                    </TouchableOpacity>
+
                                     <Text
                                         fontSize={'sm'}
                                         color={'#000'}
@@ -546,7 +624,11 @@ const Home = () => {
                                         {item?.comment}
                                     </Text>
                                 </Row>
-                                <Feather name='send' size={23} color={'gray'} />
+                                <TouchableOpacity
+                                    onPress={() => setIsSharing(true)}
+                                >
+                                    <Feather name='send' size={23} color={'gray'} />
+                                </TouchableOpacity>
                             </Row>
                             <Octicons name='bookmark' size={23} color={'gray'}
                                 style={{
@@ -764,6 +846,167 @@ const Home = () => {
                         ))
                     }
                 </ScrollView>
+            </ActionSheet>
+            <ActionSheet isOpen={isOpen} onClose={onClose}  >
+                <Row
+                    justifyContent={'space-between'}
+                >
+                    <Pressable
+                        width={'30%'}
+                        onPress={onClose}
+                    >
+                        <Box
+                            borderRadius={'full'}
+                            bgColor={'rose.400'}
+                            // p={3}
+                            w={16}
+                            h={16}
+                            alignItems={'center'}
+                            justifyContent={'center'}
+                        >
+                            <Ionicons name='ios-copy' size={23} color={'#fff'} />
+                        </Box>
+                        <Text
+                            fontSize={'sm'}
+                            fontFamily={FONTS[700].normal}
+                            color={'gray.700'}
+                            mx={2}
+                            p={2}
+                        >
+                            Link
+                        </Text>
+                    </Pressable>
+                    <Pressable
+                        width={'30%'}
+                        onPress={() => { setIsSharing(true), onClose() }}
+                    >
+                        <Box
+                            bgColor={'rose.400'}
+                            borderRadius={'full'}
+                            // p={3}
+                            w={16}
+                            h={16}
+                            alignItems={'center'}
+                            justifyContent={'center'}
+                        >
+                            <Feather name='send' size={23} color={'#fff'} />
+                        </Box>
+                        <Text
+                            fontSize={'sm'}
+                            fontFamily={FONTS[700].normal}
+                            color={'gray.700'}
+                            mx={2}
+                            p={2}
+                        >
+                            Share
+                        </Text>
+                    </Pressable>
+                    <Pressable
+                        width={'30%'}
+                        onPress={onClose}
+                    >
+                        <Box
+                            bgColor={'rose.400'}
+                            borderRadius={'full'}
+                            // p={3}
+                            w={16}
+                            h={16}
+                            alignItems={'center'}
+                            justifyContent={'center'}
+                        >
+                            <AntDesign name='exclamationcircle' size={23} color={'#ffff'} />
+                        </Box>
+                        <Text
+                            fontSize={'sm'}
+                            fontFamily={FONTS[700].normal}
+                            color={'gray.700'}
+                            mx={2}
+                            p={2}
+                        >
+                            Report
+                        </Text>
+                    </Pressable>
+                </Row>
+                <Divider my="3" _light={{
+                    bg: "muted.800"
+                }} _dark={{
+                    bg: "muted.50"
+                }}
+                    bgColor={'gray.400'}
+                />
+
+                {
+                    Sheet.map(item => (
+                        <Pressable onPress={() => {
+                            // setSelectItem(item?.title)
+                            onClose()
+                        }} key={item.id}
+                            alignSelf={'flex-start'}
+                            ml={5}
+                        >
+                            <Row
+                                alignItems={'center'}
+                            >
+                                {item?.icon}
+                                <Pressable
+                                // onPress={item?.onPress}
+
+                                >
+                                    <Text
+                                        fontSize={'md'}
+                                        fontFamily={FONTS[600].normal}
+                                        color={'gray.700'}
+                                        mx={4}
+                                        p={2}
+                                    >
+                                        {item?.title}
+                                    </Text>
+                                </Pressable>
+                            </Row>
+                        </Pressable>
+                    ))
+                }
+            </ActionSheet>
+
+            <ActionSheet isOpen={isSharing} onClose={() => {
+                setIsSharing(false)
+            }} >
+                <Pressable
+                    flexDirection={'row'}
+                    flexWrap={'wrap'}
+                    width={'100%'}
+                    onPress={() => setIsSharing(false)}
+                >
+                    {
+                        ShareSheet?.map(item => (
+                            <Row
+                                alignItems={'center'}
+                                bgColor={'rose.400'}
+                                m={2}
+                                p={4}
+                                width={'45%'}
+                                borderRadius={'15'}
+                            >
+                                <Image
+                                    alt={item?.img}
+                                    source={{ uri: item?.img }}
+                                    w={16}
+                                    h={16}
+                                    borderRadius={'full'}
+                                />
+                                <Text
+                                    fontSize={'sm'}
+                                    color={'#fff'}
+                                    fontFamily={FONTS[700].normal}
+                                    px={3}
+                                >
+                                    {item?.title}
+                                </Text>
+                            </Row>
+
+                        ))
+                    }
+                </Pressable>
             </ActionSheet>
         </Box>
     )

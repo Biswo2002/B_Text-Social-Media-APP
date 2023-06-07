@@ -18,6 +18,7 @@ export type PrivateRoutesType = {
   Comments: undefined;
   Home: undefined;
   Story: undefined;
+  Inbox: undefined;
 };
 
 export type BottomTabTypes = {
