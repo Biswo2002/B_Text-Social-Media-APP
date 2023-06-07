@@ -1,12 +1,15 @@
-import { Box, Flex, HStack, Image, Text } from 'native-base'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import Feather from 'react-native-vector-icons/Feather'
-import { StyleSheet } from 'react-native'
-import React from 'react'
+import { StyleSheet, TouchableOpacity } from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import { useNavigation } from '@react-navigation/native'
+import { Flex, HStack, Image, Text } from 'native-base'
+import React, { useState } from 'react'
 import { IMAGES } from '../assets'
 import { FONTS } from '../styles'
 
 const Header = () => {
+    const [show, setShow] = useState(false)
+    const { navigate } = useNavigation<any>();
     return (
         <HStack
             justifyContent={'space-between'}
@@ -33,10 +36,25 @@ const Header = () => {
             <Flex
                 direction='row'
             >
-                <Feather name='heart' size={25} color={'gray'} style={{
-                    marginHorizontal: 20
-                }} />
-                <AntDesign name='message1' size={23} color={'gray'} />
+
+                <TouchableOpacity
+                    onPress={() => {
+                        setShow(!show);
+                    }}>
+                    <Ionicons
+                        name={show ? 'heart' : 'heart-outline'}
+                        size={30}
+                        color={'red'}
+                        style={{
+                            marginHorizontal: 20
+                        }}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => navigate('Inbox')}
+                >
+                    <AntDesign name='message1' size={23} color={'gray'} />
+                </TouchableOpacity>
             </Flex>
         </HStack>
     )
