@@ -967,7 +967,6 @@ const Home = () => {
                     ))
                 }
             </ActionSheet>
-
             <ActionSheet isOpen={isSharing} onClose={() => {
                 setIsSharing(false)
             }} >
@@ -986,6 +985,7 @@ const Home = () => {
                                 p={4}
                                 width={'45%'}
                                 borderRadius={'15'}
+                                key={item?.id}
                             >
                                 <Image
                                     alt={item?.img}
