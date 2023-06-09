@@ -15,10 +15,22 @@ export type PublicRoutesType = {
 };
 
 export type PrivateRoutesType = {
+  RequestMessage: undefined;
   Comments: undefined;
-  Home: undefined;
+  Message: {
+    UserDetails?: any;
+    UserImage?: any;
+  };
   Story: undefined;
   Inbox: undefined;
+  Home: undefined;
+  CallScreen: {
+    Name?: any;
+    image?: any;
+  };
+  VideoCall: {
+    Image?: any;
+  };
 };
 
 export type BottomTabTypes = {
