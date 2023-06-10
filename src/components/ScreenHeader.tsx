@@ -6,7 +6,7 @@ import { PublicNavigationProps } from '../types/AllRoutes';
 import { COLORS, FONTS } from '../styles';
 import Feather from 'react-native-vector-icons/Feather';
 
-const ScreenHeader = ({ title, isShare }: any) => {
+const ScreenHeader = ({ title, isShare, isThreeDot }: any) => {
     const { goBack } = useNavigation<PublicNavigationProps>();
     return (
         <Row
@@ -36,6 +36,18 @@ const ScreenHeader = ({ title, isShare }: any) => {
             {
                 isShare &&
                 <Feather name='send' size={23} color={'gray'} />
+            }
+            {
+                isThreeDot &&
+                <Pressable
+                    mr={1}
+                    borderWidth={1.5}
+                    borderColor={'gray.500'}
+                    borderRadius={'full'}
+                    px={1}
+                >
+                    <AntDesign name='ellipsis1' size={20} color={'gray'} />
+                </Pressable>
             }
         </Row>
     )
