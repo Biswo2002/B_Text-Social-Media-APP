@@ -7,10 +7,10 @@ import { useNavigation } from '@react-navigation/native'
 import Feather from 'react-native-vector-icons/Feather'
 import React, { useState } from 'react'
 import {
-    StatusBar,
     useDisclose,
     ScrollView,
     Pressable,
+    StatusBar,
     FlatList,
     Divider,
     Avatar,
@@ -161,7 +161,199 @@ const Home_Data = [
         logo: 'https://img.freepik.com/free-photo/little-cute-girl-dress-with-angel-cruces-sits-large-round-scenery-spruce-branches_132075-10627.jpg?w=996&t=st=1686033784~exp=1686034384~hmac=739a7cc31815e4bee93dc30b1b6d314a60faa2d1dfbc238b84f8d7558031da7d',
         A_Name: 'Sandhya Rani Nayak',
         deg: 'House Wife',
-        img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+        img: 'https://img.freepik.com/free-photo/man-holds-tender-beautiful-woman-standing-with-her-green-field-with-red-poppies_8353-7578.jpg?w=360&t=st=1686422317~exp=1686422917~hmac=e0bf2f32f4771512981d14ebc3052d945ddd28977790fe87dd2fbecd72440ab5',
+
+        PIC: [
+            {
+                id: '1',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '2',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '3',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '4',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '5',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+        ],
+        like: '45,325',
+        comment: '12,545',
+    },
+    {
+        id: '6',
+        logo: 'https://img.freepik.com/free-photo/man-holds-tender-beautiful-woman-standing-with-her-green-field-with-red-poppies_8353-7578.jpg?w=360&t=st=1686422317~exp=1686422917~hmac=e0bf2f32f4771512981d14ebc3052d945ddd28977790fe87dd2fbecd72440ab5',
+        A_Name: 'Sandhya Rani Nayak',
+        deg: 'House Wife',
+        img: 'https://img.freepik.com/premium-photo/portrait-girl-with-red-cherry_144520-471.jpg?w=996',
+
+        PIC: [
+            {
+                id: '1',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '2',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '3',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '4',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '5',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+        ],
+        like: '45,325',
+        comment: '12,545',
+    },
+    {
+        id: '7',
+        logo: 'https://img.freepik.com/free-photo/brother-with-sister-play-vineyard_627829-5652.jpg?w=996&t=st=1686422485~exp=1686423085~hmac=1d4c2302f03ac8c6e84ae66bc5806bfd506095baf9904b252b18c7a0023eaeb7',
+        A_Name: 'Sandhya Rani Nayak',
+        deg: 'House Wife',
+        img: 'https://img.freepik.com/free-photo/portrait-young-cool-boy-sitting-lawn-park-embracing-girl-while-making-selfie-cute-couple-taking-photos-cellphone-frontal-camera_574295-166.jpg?w=996&t=st=1686422503~exp=1686423103~hmac=fd23025a429942c41b1af5dc2839dbe2f212af0ed0d21209ca9079a4e98bbc46',
+
+        PIC: [
+            {
+                id: '1',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '2',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '3',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '4',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '5',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+        ],
+        like: '45,325',
+        comment: '12,545',
+    },
+    {
+        id: '8',
+        logo: 'https://img.freepik.com/free-photo/brunette-woman-hugging-her-best-friend_23-2148650436.jpg?w=740&t=st=1686422533~exp=1686423133~hmac=526f2a57e7058115a21cb5155380dcec0851802eb2df5b6714398765432d6830',
+        A_Name: 'Sandhya Rani Nayak',
+        deg: 'House Wife',
+        img: 'https://img.freepik.com/free-photo/young-couple-love-outdoor_158595-108.jpg?w=740&t=st=1686422552~exp=1686423152~hmac=feb44214df849e793ac0263f0d84731ad060c27521829594ae461b0efb7ee37d',
+
+        PIC: [
+            {
+                id: '1',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '2',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '3',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '4',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '5',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+        ],
+        like: '45,325',
+        comment: '12,545',
+    },
+    {
+        id: '9',
+        logo: 'https://img.freepik.com/premium-photo/couple-toasting-wine-glasses-restaurant_109710-1464.jpg?w=996',
+        A_Name: 'Sandhya Rani Nayak',
+        deg: 'House Wife',
+        img: 'https://img.freepik.com/free-photo/young-woman-park-with-her-white-dog_1303-11499.jpg?w=996&t=st=1686422611~exp=1686423211~hmac=c4758208cf6aede0ebc8edfd8ae954a95acfe329d9565d2b8a9a4d4b4855a313',
+
+        PIC: [
+            {
+                id: '1',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '2',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '3',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '4',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '5',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+        ],
+        like: '45,325',
+        comment: '12,545',
+    },
+    {
+        id: '10',
+        logo: 'https://img.freepik.com/free-photo/young-woman-park-with-her-white-dog_1303-11499.jpg?w=996&t=st=1686422611~exp=1686423211~hmac=c4758208cf6aede0ebc8edfd8ae954a95acfe329d9565d2b8a9a4d4b4855a313',
+        A_Name: 'Sandhya Rani Nayak',
+        deg: 'House Wife',
+        img: 'https://img.freepik.com/free-photo/beautiful-couple-summer-forest-with-dogs_1157-22785.jpg?w=996&t=st=1686422642~exp=1686423242~hmac=8233fc0e0d14aea994a1ea127ab30a9be8ef16cdb9ca1b919de038adb3506d1a',
+
+        PIC: [
+            {
+                id: '1',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '2',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '3',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '4',
+                img: 'https://img.freepik.com/free-photo/smiling-couple-walking-beach-with-bouquet-roses-sunset_23-2147595922.jpg?w=996&t=st=1686034349~exp=1686034949~hmac=151641dd287fe1bfbba9462a2f884a91f60e90f337007b4881610f829cd081ba',
+            },
+            {
+                id: '5',
+                img: 'https://img.freepik.com/free-photo/freezing-wedding-couple-is-warming-up-together-winter-mountains-front-frozen-lake_8353-11090.jpg?w=996&t=st=1686422794~exp=1686423394~hmac=8b396a48bad332231c5b36d244739d931446ce6db34e5b996f6805e2e5cdd475'
+            },
+        ],
+        like: '45,325',
+        comment: '12,545',
+    },
+    {
+        id: '11',
+        logo: 'https://img.freepik.com/free-photo/two-little-girls-table-looking-camera-closeup_1153-9743.jpg?w=996&t=st=1686422739~exp=1686423339~hmac=948f1d7c92fd25f5b259944ae7769392c2875355a3a3657b9bb39e8f10b3ac98',
+        A_Name: 'Sandhya Rani Nayak',
+        deg: 'House Wife',
+        img: 'https://img.freepik.com/free-photo/freezing-wedding-couple-is-warming-up-together-winter-mountains-front-frozen-lake_8353-11090.jpg?w=996&t=st=1686422794~exp=1686423394~hmac=8b396a48bad332231c5b36d244739d931446ce6db34e5b996f6805e2e5cdd475',
 
         PIC: [
             {
