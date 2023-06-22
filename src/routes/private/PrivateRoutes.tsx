@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native'
 import React from 'react'
 import RequestMessage from '../../screen/private/RequestMessage'
 import CallScreen from '../../screen/private/CallScreen'
+import { Home, SearchNext } from '../../screen/private'
 import VideoCall from '../../screen/private/VideoCall'
 import Comments from '../../screen/private/Comments'
 import Story from '../../screen/private/story/Story'
 import Message from '../../screen/private/Message'
 import Inbox from '../../screen/private/Inbox'
-import { Home } from '../../screen/private'
 import Bottomtab from '../layout/Bottomtab'
 
 const PrivateRoutes = () => {
@@ -19,6 +19,7 @@ const PrivateRoutes = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name='RequestMessage' component={RequestMessage} />
+      <Stack.Screen name='SearchNext' component={SearchNext} />
       <Stack.Screen name='CallScreen' component={CallScreen} />
       <Stack.Screen name='Bottomtab' component={Bottomtab} />
       <Stack.Screen name='VideoCall' component={VideoCall} />
