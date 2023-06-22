@@ -13,6 +13,8 @@ import {
     ScrollView
 } from 'native-base'
 import { COLORS, FONTS } from '../../styles'
+import { useNavigation } from '@react-navigation/native'
+import { PrivateNavigationProps } from '../../types/AllRoutes'
 
 const data = [
     {
@@ -132,6 +134,7 @@ const data1 = [
 ]
 const Search = () => {
     const [selectBottom, setSelectBottom] = useState('');
+    const { navigate } = useNavigation<PrivateNavigationProps>()
     return (
         <Box bgColor={'#fff'} flex={1}>
             <Box
@@ -173,8 +176,11 @@ const Search = () => {
                             bgColor={
                                 selectBottom === item?.id ? COLORS.PRIMARY : COLORS.SECONDARY
                             }
+                            _pressed={{
+                                opacity: 0.6
+                            }}
                             shadow={2}
-                            onPress={() => setSelectBottom(item?.id)}
+                            onPress={() => { navigate('SearchNext'), setSelectBottom(item?.id) }}
                             p={2}
                             alignItems={'center'}
                             justifyContent={'center'}
@@ -216,20 +222,13 @@ const Search = () => {
                                 source={{ uri: item?.img }}
                                 width={Dimensions.get('window').width / 3.4}
                                 height={Dimensions.get('window').height / 6}
-                                // resizeMode='contain'
                                 borderRadius={'10'}
                             />
                         ))
                     }
                 </Row>
-
-
-
-
-
-
             </ScrollView>
-        </Box>
+        </Box >
     )
 }
 
