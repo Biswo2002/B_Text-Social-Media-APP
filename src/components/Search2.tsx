@@ -92,66 +92,64 @@ const data = [
 ]
 const Search2 = () => {
     return (
-        <Box>
-            <FlatList
-                data={data}
-                showsVerticalScrollIndicator={false}
-                renderItem={({ item }) => (
-                    <Row
-                        justifyContent={'space-between'}
-                        alignItems={'center'}
-                        m={4}
-                        key={item?.id}
+        <FlatList
+            data={data}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => (
+                <Row
+                    justifyContent={'space-between'}
+                    alignItems={'center'}
+                    m={4}
+                    key={item?.id}
+                >
+                    <HStack
                     >
-                        <HStack
-                        >
-                            <Avatar
-                                source={{
-                                    uri: item?.img
-                                }}
-                                size="12"
-                            />
-                            <Box
-                                mx={5}
-                                mt={1}
-                            >
-                                <Text
-                                    fontSize={'sm'}
-                                    // mt={4}
-                                    color={'#000'}
-                                    fontFamily={FONTS[600].normal}
-                                >
-                                    {item?.name}
-                                </Text>
-                                <Text
-                                    fontSize={'xs'}
-                                    color={'gray.600'}
-                                    fontFamily={FONTS[500].normal}
-                                >
-                                    {item?.deg}
-                                </Text>
-                            </Box>
-                        </HStack>
-                        <Pressable
-                            mr={1}
-                            borderWidth={1.5}
-                            borderColor={COLORS.PRIMARY}
-                            px={4}
-                            py={1}
-                            borderRadius={'full'}
+                        <Avatar
+                            source={{
+                                uri: item?.img
+                            }}
+                            size="12"
+                        />
+                        <Box
+                            mx={5}
+                            mt={1}
                         >
                             <Text
-                                color={COLORS.PRIMARY}
+                                fontSize={'sm'}
+                                // mt={4}
+                                color={'#000'}
                                 fontFamily={FONTS[600].normal}
-                                fontSize={'xs'}
                             >
-                                {item?.status}
+                                {item?.name}
                             </Text>
-                        </Pressable>
-                    </Row>
-                )}
-            />
-        </Box>
+                            <Text
+                                fontSize={'xs'}
+                                color={'gray.600'}
+                                fontFamily={FONTS[500].normal}
+                            >
+                                {item?.deg}
+                            </Text>
+                        </Box>
+                    </HStack>
+                    <Pressable
+                        mr={1}
+                        borderWidth={1.5}
+                        borderColor={COLORS.PRIMARY}
+                        px={4}
+                        py={1}
+                        borderRadius={'full'}
+                    >
+                        <Text
+                            color={COLORS.PRIMARY}
+                            fontFamily={FONTS[600].normal}
+                            fontSize={'xs'}
+                        >
+                            {item?.status}
+                        </Text>
+                    </Pressable>
+                </Row>
+            )}
+        />
     )
 }
 
