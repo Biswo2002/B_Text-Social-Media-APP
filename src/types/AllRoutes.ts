@@ -17,6 +17,9 @@ export type PublicRoutesType = {
 export type PrivateRoutesType = {
   RequestMessage: undefined;
   SearchNext: undefined;
+  SearchProfile: undefined;
+  Location: undefined;
+  Audio: undefined;
   Comments: undefined;
   Message: {
     UserDetails?: any;
