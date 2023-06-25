@@ -9,7 +9,10 @@ import Comments from '../../screen/private/Comments'
 import Story from '../../screen/private/story/Story'
 import Message from '../../screen/private/Message'
 import Inbox from '../../screen/private/Inbox'
+import Audio from '../../screen/private/Audio'
 import Bottomtab from '../layout/Bottomtab'
+import SearchProfile from '../../screen/private/SearchProfile'
+import Location from '../../screen/private/Location'
 
 const PrivateRoutes = () => {
   const Stack = createNativeStackNavigator()
@@ -28,6 +31,9 @@ const PrivateRoutes = () => {
       <Stack.Screen name='Inbox' component={Inbox} />
       <Stack.Screen name='Story' component={Story} />
       <Stack.Screen name='Home' component={Home} />
+      <Stack.Screen name='Audio' component={Audio} />
+      <Stack.Screen name='SearchProfile' component={SearchProfile} />
+      <Stack.Screen name='Location' component={Location} />
 
     </Stack.Navigator>
   )
