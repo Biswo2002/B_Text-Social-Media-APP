@@ -88,7 +88,7 @@ export default function BottomTab() {
                             <Icon
                                 type={Icons.Ionicons}
                                 name="add"
-                                color={focused ? COLORS.PRIMARY : '#fff'}
+                                color={focused ? COLORS.SECONDARY : '#fff'}
                                 size={25}
                             />
                         </Box>
