@@ -69,67 +69,65 @@ const Message_data = [
 
 const SearchAll = () => {
     return (
-        <Box>
-            <FlatList
-                data={Message_data}
-                showsVerticalScrollIndicator={false}
-                renderItem={({ item }) => (
-                    <Pressable
+        <FlatList
+            data={Message_data}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => (
+                <Pressable
+                >
+                    <Row
+                        m={4}
+                        justifyContent={'space-between'}
                     >
-                        <Row
-                            m={4}
-                            justifyContent={'space-between'}
+                        <HStack
                         >
-                            <HStack
-                            >
-                                <Avatar
-                                    source={{
-                                        uri: item?.img
-                                    }}
-                                    size="12"
-                                />
-                                <Box
-                                    mx={5}
-                                    mt={1}
-                                >
-                                    <Text
-                                        fontSize={'sm'}
-                                        // mt={4}
-                                        color={'#000'}
-                                        fontFamily={FONTS[600].normal}
-                                    >
-                                        {item?.name}
-                                    </Text>
-                                    <Text
-                                        fontSize={'xs'}
-                                        color={'gray.600'}
-                                        fontFamily={FONTS[500].normal}
-                                    >
-                                        {item?.message}
-                                    </Text>
-                                </Box>
-                            </HStack>
+                            <Avatar
+                                source={{
+                                    uri: item?.img
+                                }}
+                                size="12"
+                            />
                             <Box
+                                mx={5}
+                                mt={1}
+                            >
+                                <Text
+                                    fontSize={'sm'}
+                                    // mt={4}
+                                    color={'#000'}
+                                    fontFamily={FONTS[600].normal}
+                                >
+                                    {item?.name}
+                                </Text>
+                                <Text
+                                    fontSize={'xs'}
+                                    color={'gray.600'}
+                                    fontFamily={FONTS[500].normal}
+                                >
+                                    {item?.message}
+                                </Text>
+                            </Box>
+                        </HStack>
+                        <Box
+                            alignItems={'center'}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                        >
+                            <Box
+                                bgColor={COLORS.PRIMARY}
+                                borderRadius={'5'}
+                                w={10}
                                 alignItems={'center'}
                                 justifyContent={'center'}
-                                alignSelf={'center'}
+                                h={10}
                             >
-                                <Box
-                                    bgColor={COLORS.PRIMARY}
-                                    borderRadius={'5'}
-                                    w={10}
-                                    alignItems={'center'}
-                                    justifyContent={'center'}
-                                    h={10}
-                                >
-                                    <Entypo name='squared-cross' size={20} color={'#fff'} />
-                                </Box>
+                                <Entypo name='squared-cross' size={20} color={'#fff'} />
                             </Box>
-                        </Row>
-                    </Pressable>
-                )}
-            />
-        </Box>
+                        </Box>
+                    </Row>
+                </Pressable>
+            )}
+        />
     )
 }
 
