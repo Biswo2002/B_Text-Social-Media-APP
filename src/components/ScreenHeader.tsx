@@ -33,22 +33,24 @@ const ScreenHeader = ({ title, isShare, isThreeDot }: any) => {
                     {title}
                 </Text>
             </HStack>
-            {
-                isShare &&
-                <Feather name='send' size={23} color={'gray'} />
-            }
-            {
-                isThreeDot &&
-                <Pressable
-                    mr={1}
-                    borderWidth={1.5}
-                    borderColor={'gray.500'}
-                    borderRadius={'full'}
-                    px={1}
-                >
-                    <AntDesign name='ellipsis1' size={20} color={'gray'} />
-                </Pressable>
-            }
+            <HStack>
+                {
+                    isShare &&
+                    <Feather name='send' size={23} color={'gray'} />
+                }
+                {
+                    isThreeDot &&
+                    <Pressable
+                        ml={4}
+                        borderWidth={1.5}
+                        borderColor={'gray.500'}
+                        borderRadius={'full'}
+                        px={1}
+                    >
+                        <AntDesign name='ellipsis1' size={20} color={'gray'} />
+                    </Pressable>
+                }
+            </HStack>
         </Row>
     )
 }
