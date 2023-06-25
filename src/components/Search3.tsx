@@ -1,8 +1,9 @@
+import { Avatar, Box, FlatList, HStack, Pressable, Text } from 'native-base'
+import { useNavigation } from '@react-navigation/native'
 import { StyleSheet } from 'react-native'
 import React from 'react'
-import { Avatar, Box, FlatList, HStack, Pressable, Row, Text } from 'native-base'
-import { COLORS, FONTS } from '../styles'
-import Entypo from 'react-native-vector-icons/Entypo'
+import { PrivateNavigationProps } from '../types/AllRoutes'
+import { FONTS } from '../styles'
 
 const Message_data = [
     {
@@ -68,6 +69,7 @@ const Message_data = [
 ]
 
 const Search3 = () => {
+    const { navigate } = useNavigation<PrivateNavigationProps>()
     return (
         <Box>
             <FlatList
@@ -76,6 +78,10 @@ const Search3 = () => {
                 renderItem={({ item }) => (
                     <Pressable
                         m={4}
+                        onPress={() => navigate('Audio')}
+                        _pressed={{
+                            opacity: .5
+                        }}
                     >
                         <HStack
                         >
