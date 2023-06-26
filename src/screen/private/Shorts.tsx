@@ -338,18 +338,7 @@ const Shorts = () => {
     ]
     return (
         <Box bgColor={'#fff'} flex={1}  >
-            <Center>
-                <Video
-                    source={VIDEOS.TWO}
-                    paused={!isPlaying}
-                    controls={true}
-                    style={{
-                        width: Dimensions.get('window').width,
-                        height: Dimensions.get('window').height,
-                    }}
-                    muted={isMuted}
-                />
-            </Center>
+
             <Row
                 position={'absolute'}
                 justifyContent={'space-between'}
@@ -397,14 +386,26 @@ const Shorts = () => {
             </Pressable>
 
             {/* <FlatList
-            data={data}
-            // showsVerticalScrollIndicator={false}
-            horizontal={true}
-            renderItem={({ item }) => (
-                <> */}
+                data={data}
+                // showsVerticalScrollIndicator={false}
+                horizontal={true}
+                renderItem={({ item }) => (
+                    <> */}
+            <Center>
+                <Video
+                    source={VIDEOS.TWO}
+                    paused={!isPlaying}
+                    controls={true}
+                    style={{
+                        width: Dimensions.get('window').width,
+                        height: Dimensions.get('window').height,
+                    }}
+                    muted={isMuted}
+                />
+            </Center>
             <HStack
                 position={'absolute'}
-                top={'60%'}
+                bottom={24}
                 width={'100%'}
             >
                 <Row
@@ -561,7 +562,7 @@ const Shorts = () => {
             <HStack
                 m={5}
                 position={'absolute'}
-                top={'81%'}
+                bottom={'24'}
                 width={'70%'}
             >
                 <Avatar
@@ -585,8 +586,8 @@ const Shorts = () => {
                 </Box>
             </HStack>
             {/* </>
-            )}
-        /> */}
+                )}
+            /> */}
 
             <ActionSheet isOpen={isSharing} onClose={() => {
                 setIsSharing(false)
